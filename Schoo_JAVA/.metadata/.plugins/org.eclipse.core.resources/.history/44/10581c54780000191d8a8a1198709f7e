@@ -1,0 +1,79 @@
+import java.util.*;
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+public class ListenerMouseEx  extends JFrame{
+	
+	ListenerMouseEx(){
+		setTitle("예");
+		setLayout(new FlowLayout());
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		Container c  = getContentPane();
+		
+		JButton btn = new JButton("yellow");
+		btn.setBackground(Color.YELLOW);
+		
+		MyMouseListener listener = new MyMouseListener();
+		
+		setSize(300,150);
+		setVisible(true);
+		
+	}
+public class MyMouseListener implements MouseListener,MouseMotionListener{
+
+	@Override
+	public void mouseDragged(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseMoved(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		JButton b  = (JButton)e.getSource();
+		if(b.getText().equals("yellow")) {
+			b.setBackground(Color.RED);
+		}
+		
+		
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new ListenerMouseEx();
+	}
+
+}

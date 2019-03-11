@@ -1,0 +1,175 @@
+package finalAssignmnet;
+import javax.swing.*;
+import java.awt.event.*;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.awt.*;
+import java.util.*;
+
+class data {
+	String number;
+	String address;
+
+	public data(String number, String address) {
+		this.number = number;
+		this.address = address;
+
+	}
+
+}
+
+public class PhoneBook2 extends JFrame {
+	
+	JTextArea tf1 = new JTextArea();
+
+	JButton btn1 = new JButton("삽입");
+
+	JButton btn2 = new JButton("삭제");
+
+	JButton btn3 = new JButton("검색");
+
+	JButton btn4 = new JButton("조회");
+
+	JTextField tfname = new JTextField(150);
+	JTextField tfphone = new JTextField(150);
+	JTextField tfaddress = new JTextField(150);
+
+	HashMap<String, data> map = new HashMap<String, data>();
+
+	public PhoneBook2() {
+
+		setTitle("전화번호부 과제 ");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		Container c = getContentPane();
+
+		MyMouseListener listener = new MyMouseListener();
+
+		btn1.addMouseListener(listener);
+		btn2.addMouseListener(listener);
+		btn3.addMouseListener(listener);
+		btn4.addMouseListener(listener);
+
+		c.setLayout(null);
+
+		JPanel p1 = new JPanel();
+		p1.setLayout(new GridLayout(3, 2));
+		p1.add(new JLabel("name"));
+		p1.add(tfname);
+		p1.add(new JLabel("phone"));
+		p1.add(tfphone);
+		p1.add(new JLabel("address"));
+		p1.add(tfaddress);
+
+		tf1.setLocation(100, 50);
+		tf1.setSize(300, 300);
+		c.add(tf1);
+
+		btn1.setLocation(450, 100);
+		btn1.setSize(100, 50);
+		c.add(btn1);
+
+		btn2.setLocation(550, 100);
+		btn2.setSize(100, 50);
+		c.add(btn2);
+
+		btn3.setLocation(650, 100);
+		btn3.setSize(100, 50);
+		c.add(btn3);
+
+		btn4.setLocation(750, 100);
+		btn4.setSize(100, 50);
+		c.add(btn4);
+
+		p1.setLocation(450, 200);
+		p1.setSize(400, 100);
+		c.add(p1);
+		
+		
+
+		setSize(900, 400);
+		setVisible(true);
+
+	}
+
+	public class MyMouseListener implements MouseListener, MouseMotionListener {
+
+		@Override
+		public void mouseDragged(MouseEvent e) {
+
+		}
+
+		@Override
+		public void mouseMoved(MouseEvent e) {
+
+		}
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JButton b = (JButton) e.getSource();
+
+			if (b.getText().equals("삽입")) {
+				map.put(tfname.getText(), new data(tfphone.getText(), tfaddress.getText()));
+				tf1.append("==================================삽입 완료되었습니다========================================" + "\n");
+			}
+			if (b.getText().equals("삭제")) {
+				map.remove(tfname.getText());
+				tf1.append("==================================삭제가 완료되었습니다========================================" + "\n");
+				
+			}
+			if (b.getText().equals("검색")) {
+				tf1.append("==========================================검색 =============================================="+"\n");
+				String findvalue = tfname.getText();
+				if (findvalue == null) {
+					tf1.append("=============================저장된 사람이 없습니다.=========================================="+"\n");
+				} else {
+				data findData = map.get(findvalue);
+				tf1.append(findvalue + " " + findData.number + " " + findData.address + "\n");
+				
+				}
+
+			}
+
+			if (b.getText().equals("조회")) {
+				tf1.append("====================================저장한 사람들의 대한 정보===================================="+"\n");
+				Set<String> result = map.keySet();
+				Iterator<String> it = result.iterator();
+				while (it.hasNext()) {
+					String Data = null;
+					 Data = it.next();
+					 data value  =map.get(Data);
+					 tf1.append(Data + " "+value.number+" "+value.address + "\n");
+					 
+				}
+
+			}
+
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+
+		}
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new PhoneBook2();
+	}
+
+}

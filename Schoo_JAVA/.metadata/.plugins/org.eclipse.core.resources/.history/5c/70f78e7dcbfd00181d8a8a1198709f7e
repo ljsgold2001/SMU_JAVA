@@ -1,0 +1,85 @@
+
+package exam2;
+import javax.swing.*;
+import java.util.*;
+import java.awt.*;
+
+public class Phone extends JFrame{
+
+		// button의 객체를 생성한다.
+		JButton btn1 = new JButton("삽입 ");
+		JButton btn2 = new JButton("삭제 ");
+		JButton btn3 = new JButton("수정 ");
+		JButton btn4 = new JButton("조회 ");
+		
+		JPanel panel = new JPanel();
+		// label 객체 생성한다. 
+		JLabel l1 = new JLabel("name");
+		JLabel l2 = new JLabel("address");
+		JLabel l3 = new JLabel("Phone");
+		
+		// textField 객체 생성한다. 
+		JTextField tf1 = new JTextField(150);
+		JTextField tf2 = new JTextField(150);
+		JTextField tf3 = new JTextField(150);
+		
+		// text 상자를 만들고 그곳에 scroll 추가하는방법 
+		JTextArea box = new JTextArea();
+		JTextArea scroll = new JTextArea(20,300);
+		JScrollPane scrollpane = new JScrollPane(box);
+		
+	
+	
+	
+	public Phone(){
+		Container c = getContentPane();
+		
+		setTitle("자바 시험공부2 ");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		//c의 레이아웃을 null 로 주면 내가 원하는곳에 지정해서 붙여넣을수 있다.
+		c.setLayout(null);
+		// btnd1 ,2 ,3 의 위치와 사이즈를 지정해준다. 그이후에 container에 붙여준다.
+		btn1.setLocation(450, 100);
+		btn1.setSize(100, 50);
+		c.add(btn1);
+
+		btn2.setLocation(550, 100);
+		btn2.setSize(100, 50);
+		c.add(btn2);
+
+		btn3.setLocation(650, 100);
+		btn3.setSize(100, 50);
+		c.add(btn3);
+
+		btn4.setLocation(750, 100);
+		btn4.setSize(100, 50);
+		c.add(btn4);
+		// 판넬을 만들어보자 1. panel을 gridlayout으로 만들기 2. 만들어둔 panel에다가 라벨 l1,l2,l3 랑 텍스트박스 tf1,tf2,tf3 을 붙이기 3.사이즈랑 위치정해주고container에 붙이
+		panel.setLayout(new GridLayout(3,2));
+		
+		panel.add(l1);
+		panel.add(tf1);
+		
+		panel.add(l2);
+		panel.add(tf2);
+		
+		panel.add(l3);
+		panel.add(tf3);
+		
+		panel.setLocation(450,200);
+		panel.setSize(400,200);
+		c.add(panel);
+		// 마지막 전체를 사이즈를 정해주고 visible 띄워주기 
+		
+		c.add(scrollpane);
+		setSize(900,500);
+		setVisible(true);
+		
+		
+	
+}
+public static void main(String[] args) {
+	new Phone();
+}
+}
